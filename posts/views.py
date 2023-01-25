@@ -3,6 +3,7 @@ from rest_framework.permissions import IsAuthenticated
 
 from .models import Post
 from .serializers import PostSerializer
+from .permissions import IsAuthorOrReadOnly
 
 
 # *Create your views here.
@@ -15,7 +16,7 @@ class PostList(ListCreateAPIView):
 
 
 class PostDetail(RetrieveUpdateDestroyAPIView):
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthorOrReadOnly]
 
     queryset = Post.objects.all()
     serializer_class = PostSerializer
