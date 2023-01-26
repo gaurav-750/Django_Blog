@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-
+    'allauth.socialaccount.providers.github',  # new
     'dj_rest_auth',
     'dj_rest_auth.registration',
 
@@ -151,4 +151,5 @@ REST_FRAMEWORK = {
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-SITE_ID = 1
+SITE_ID = 2
+LOGIN_REDIRECT_URL = 'home'
