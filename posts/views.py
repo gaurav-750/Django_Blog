@@ -10,19 +10,19 @@ from .permissions import IsAuthorOrReadOnly
 
 
 # *Create your views here.
-class PostList(ListCreateAPIView):
-    # todo Add permission at view level
-    # permission_classes = [IsAuthenticated]
+# class PostList(ListCreateAPIView):
+#     # todo Add permission at view level
+#     # permission_classes = [IsAuthenticated]
 
-    queryset = Post.objects.all()
-    serializer_class = PostSerializer
+#     queryset = Post.objects.all()
+#     serializer_class = PostSerializer
 
 
-class PostDetail(RetrieveUpdateDestroyAPIView):
-    permission_classes = [IsAuthorOrReadOnly]
+# class PostDetail(RetrieveUpdateDestroyAPIView):
+#     permission_classes = [IsAuthorOrReadOnly]
 
-    queryset = Post.objects.all()
-    serializer_class = PostSerializer
+#     queryset = Post.objects.all()
+#     serializer_class = PostSerializer
 
 
 # class UserList(ListCreateAPIView):
@@ -33,6 +33,14 @@ class PostDetail(RetrieveUpdateDestroyAPIView):
 # class UserDetail(RetrieveUpdateDestroyAPIView):
 #     queryset = get_user_model().objects.all()
 #     serializer_class = UserSerializer
+
+
+class PostViewSet(ModelViewSet):
+    permission_classes = [IsAuthorOrReadOnly]
+
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
 
 class UserViewSet(ModelViewSet):
     queryset = get_user_model().objects.all()
